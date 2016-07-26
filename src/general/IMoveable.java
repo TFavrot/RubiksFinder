@@ -7,17 +7,24 @@ import java.util.List;
  */
 public interface IMoveable {
 
+    Move getLastMove();
+
     List<Move> getListMove();
     List<Piece> getListPiece();
 
-    void executeMove(Move move);
+    IMoveable executeMove(Move move);
 
     boolean isFinished();
 
-    boolean checkOutCondition(List<Piece> conditionCube);
+    boolean checkOutCondition(IMoveable conditionCube);
 
     /**
      * @return the max move necessary to finish a rubiks, or a higher bound. If it is unknown,
      */
     int getMaxMoves();
+
+    IMoveable getFormerPosition();
+    void setFormerPosition(IMoveable position);
+
+    void setLastMove(Move move);
 }
