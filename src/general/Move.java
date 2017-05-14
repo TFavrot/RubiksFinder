@@ -1,6 +1,5 @@
 package general;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +13,7 @@ public class Move {
     public Move(Map<Integer, Move> forbiddenNextMove, int id, String tag) {
         this.forbiddenNextMove = forbiddenNextMove;
         this.id = id;
+        this.tag = tag;
     }
 
     public Map<Integer, Move> getForbiddenNextMove() {

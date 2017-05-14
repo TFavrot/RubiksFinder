@@ -27,4 +27,6 @@ public interface IMoveable {
     void setFormerPosition(IMoveable position);
 
     void setLastMove(Move move);
+
+    void display();
 }

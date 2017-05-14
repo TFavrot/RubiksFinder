@@ -6,13 +6,13 @@ import java.util.List;
  * Created by thomas on 25/07/2016.
  */
 public abstract class AbstractCube implements IMoveable {
-    private List<Move> moves;
-    private List<Piece> cubeDescriptor;
-
-    private List<Piece> finishedCube;
+    protected static List<Move> moves;
+    protected List<Piece> cubeDescriptor;
+    protected List<Piece> finishedCube;
 
     private Move lastMove;
     private IMoveable formerPosition;
+
 
     public AbstractCube(List<Move> moves, List<Piece> cubeDescriptor, List<Piece> finishedCube) {
         this.moves = moves;
@@ -27,6 +27,8 @@ public abstract class AbstractCube implements IMoveable {
         nextPosition.setLastMove(move);
         return nextPosition;
     }
+
+    abstract public void displayCube();
 
     protected abstract IMoveable executeConcreteMove(Move move);
 
@@ -68,7 +70,7 @@ public abstract class AbstractCube implements IMoveable {
     public boolean checkOutCondition(List<Piece> cubeOutCondition){
 
         for(int i = 0; i < cubeDescriptor.size() ; i++) {
-            if(cubeOutCondition.get(i).equals(cubeDescriptor.get(i))){
+            if(!cubeOutCondition.get(i).equals(cubeDescriptor.get(i))){
                 return false;
             }
         }
@@ -83,5 +85,10 @@ public abstract class AbstractCube implements IMoveable {
     @Override
     public int getMaxMoves(){
         return -1;
+    }
+
+    @Override
+    public void display(){
+        displayCube();
     }
 }
